@@ -64,73 +64,7 @@ function myCallBackBlur(elem, valid, message)
 	}
 }
 
-function myDateCallBackBlur(elem, valid, message)
-{
-	if ($('#days').val().length < 2 || $('#days').val().length > 2 || isNaN($('#days').val()) ||
-		$('#months').val().length < 2 || $('#months').val().length > 2 || isNaN($('#months').val()))
-		valid = false;
-	global_valid[elem.id] = valid;
-	if (!valid)
-	{		
-		$(elem).parent().find('.warning').remove();
-		if (global_valid[elem.id] === false)
-		{
-			$(elem).parent().find('.validation_status').removeClass('status_valid');
-			$(elem).parent().find('.validation_status').addClass('status_invalid');
-			$('#months').removeClass('valid');
-			$('#days').removeClass('valid');
-			$('#months').addClass('invalid');
-			$('#days').addClass('invalid');
-		}
-	}
-	else
-	{
-		$(elem).parent().find('.warning').remove();
-		$(elem).parent().css('margin-bottom', '0');
-		$('#months').removeClass('invalid');
-		$('#days').removeClass('invalid');
-		$('#months').addClass('valid');
-		$('#days').addClass('valid');
-		updateStatus(elem, valid);
-	}
-}
 
-function myEmailCallBackBlur(elem, valid, message)
-{
-	//global_valid[elem.id] = valid;
-	if (!valid)
-	{
-		var mysize = message.split('<br />');
-		mysize = 10 + ((mysize.length - 1) * 15);
-		
-		$(elem).parent().css('margin-bottom', mysize + 'px');
-		
-		$(elem).parent().find('.warning').remove();
-		if (global_valid[elem.id] === false)
-		{
-			$(elem).parent().append('<div class="warning">'+message+'</div>');
-			$(elem).parent().find('.validation_status').removeClass('status_valid');
-			$(elem).parent().find('.validation_status').addClass('status_invalid');
-		}
-	}
-	else
-	{
-		$(".hidden_register_params").show('slow');
-		$(elem).parent().find('.warning').remove();
-		$(elem).parent().css('margin-bottom', '0');
-		updateStatus(elem, valid);
-	}
-}
-
-function myEmailCallBackKeyUp(elem, valid, message)
-{
-	global_valid[elem.id] = valid;
-	if (valid)
-	{
-		$(".hidden_register_params").show('slow');
-	}
-	updateStatus(elem, valid);
-}
 
 (function($) {
 	var submitok = 0;
