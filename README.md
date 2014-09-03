@@ -11,7 +11,7 @@ juqery-backvalidation-plugin
 
 Initialize the plugin
 
-
+{
 $(document).ready(function(){
 	
 	// If you need some translations, or custom error messages. for english, the default ones should be good enough
@@ -67,9 +67,12 @@ $(document).ready(function(){
 	finally validate the form
 	$('#create-account_form').formValidate(".hidden_register_params");
 });
+}
+
 
 Add some style for your default valid / unvalid display
 
+{
 <style>
 .valid {
 	border-color: green;
@@ -79,4 +82,4 @@ Add some style for your default valid / unvalid display
 	border-color: red;
 }
 </style>
-
+}
